@@ -1,8 +1,26 @@
+import java.io.File;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        String text = new Scanner(System.in).nextLine();
-        System.out.println("Длина текста:" + text.length());
+        int count = 0;
+        boolean fileExists;
+        boolean isDirectory;
+        while (1 < 3) {
+            String path = new Scanner(System.in).nextLine();
+            File file = new File(path);
+            fileExists = file.exists();
+            isDirectory = file.isDirectory();
+            if (isDirectory) {
+                System.out.println("Это не файл, а директория");
+                continue;
+            }
+            if (fileExists) {
+                System.out.println("Путь указан верно");
+                count++;
+                System.out.println("Это файл N " + count);
+            }
+            else System.out.println("Этот файл не существует");
+        }
     }
 }
